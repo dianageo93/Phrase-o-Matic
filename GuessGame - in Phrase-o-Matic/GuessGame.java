@@ -1,23 +1,23 @@
 
 public class GuessGame {
-	private boolean[] playerGuessIsRight=new boolean[3];
-	private Number number=new Number();
-	private boolean gameReady=false;
 	
+	private boolean gameReady=false;
+	Player[] plArray=new Player[3];
+
 	public void startGame() {
-		int no=number.getNumber();
+		int targetNumber=(int)(Math.random()*10);
 		while(!gameReady) {
-			System.out.println("The number to guess is "+no);
+			System.out.println("The number to guess is "+targetNumber);
 			for(int i=0;i<3;i++) {
-				playerGuessIsRight[i]=false;
-				int playerGuess=number.getNumber();
+				plArray[i].setIsRight(false);
+				int playerGuess=plArray[i].getGuessedNumber();
 				System.out.println("Player "+i+" guessed "+playerGuess);
-				if(playerGuess==no) {
-					playerGuessIsRight[i]=true;
+				if(playerGuess==targetNumber) {
+					plArray[i].setIsRight(true);
 				}
 			}
 			for(int i=0;i<3;i++) {
-				if(playerGuessIsRight[i]==true) {
+				if(plArray[i].getIsRight()==true) {
 					System.out.println("Player "+i+" got it right.");
 					System.out.println("We have a winner !");
 					gameReady=true;
