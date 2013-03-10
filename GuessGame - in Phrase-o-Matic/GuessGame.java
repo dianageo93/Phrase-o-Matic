@@ -1,9 +1,17 @@
 
 public class GuessGame {
 	
-	private boolean gameReady=false;
-	Player[] plArray=new Player[3];
-
+	private boolean gameReady;
+	Player[] plArray;
+	
+	public GuessGame() {
+		gameReady=false;
+		plArray=new Player[3];
+		for(int i=0;i<3;i++){
+			plArray[i]=new Player();
+		}
+	}
+	
 	public void startGame() {
 		int targetNumber=(int)(Math.random()*10);
 		while(!gameReady) {
